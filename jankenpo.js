@@ -47,9 +47,7 @@ function playRound(playerSelection, computerSelection) {
   };
 
 function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i > -1; i++) {
         playerSelection = prompt()
         computerSelection = getComputerChoice();
         let gameResults = playRound(playerSelection, computerSelection);
@@ -80,3 +78,38 @@ function game(){
         console.log("Draw!")
      }
 };
+var plScore = 0
+var cpScore = 0
+function myFunction() {
+    let gameResults = playRound(this.id,getComputerChoice());
+    results.innerText = gameResults
+    if (gameResults.includes("win")){
+        plScore++
+    } else if (gameResults.includes("lose")){
+        cpScore++
+    } else{
+        pass
+    };
+    playerscore.innerText = plScore;
+    computerscore.innerText = cpScore;
+    if(plScore == 5 || cpScore == 5) {
+        if (plScore > cpScore){
+            results.innerText = `${plScore}-${cpScore}` + "Player wins!"
+         } else if (plScore < cpScore){
+
+            results.innerText = `${plScore}-${cpScore}` + "Player lose!"
+         } else{
+            pass
+         }
+     };
+}
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+const results = document.getElementById("results");
+const playerscore = document.getElementById("playerscore");
+const computerscore = document.getElementById("computerscore");
+
+rock.addEventListener("click", myFunction);
+paper.addEventListener("click", myFunction);
+scissors.addEventListener("click", myFunction);
